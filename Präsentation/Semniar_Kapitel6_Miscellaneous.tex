@@ -1,0 +1,268 @@
+\documentclass[xcolor={usenames,dvipsnames}, 
+	hyperref={
+	colorlinks=true, 						% Internetseiten werden farblich hervorgehoben
+	linkcolor=black, 						% Farbe für interne Referenzen
+	urlcolor=black,							% Farbe für Links auf Webseiten
+	citecolor=black,						% Farbe für Zitate \cite{<bibtexid>}
+	pdfpagelabels=false,
+	%pdfauthor={}, 
+	%pdftitle={}				% Verewigt Author und Titel in PDF-Informationen
+	},
+	ignorenonframetext,			% Keine Nummerierung auf erster Folie
+	compress					% Minimize navigation bars
+]{beamer}
+%===== Formatierungs-Packages =====
+	\usepackage[T1]{fontenc}				% fontenc und inputenc ermöglichen
+	\usepackage[latin1]{inputenc}			% Silbentrennung und Eingabe 
+	%\usepackage[utf8]{inputenc}
+	\usepackage{lmodern}					% Schrift wirkt (in pdf-Ausgabe) fließender
+  							
+%===== Sprach-Packages =====
+	\usepackage[ngerman]{babel}			% Babel für diverse Sprachanpassungen, 
+  										% z.B. Anführungszeichen
+%===== Interne Latex-Packages =====
+	\usepackage{fixltx2e} 				% Verbessert einige Kernkompetenzen von LaTeX2e
+  
+%===== Mathe-Packages ======
+	\usepackage{amsmath, amssymb, amsfonts} 	% Mathematische Features der American Mathematical
+	\usepackage{cancel}
+	\usepackage[output-decimal-marker={,},  	% Deutsche Dezimaltrennung mit Komma
+		separate-uncertainty = true,		  	% Fehlerangabe: \SI{3(2)}{\tesla}
+		per-mode=fraction,					  	% Einheiten als Bruch darstellen
+		exponent-product = \cdot,			  	% Exponentialschreibweise mit Malzeichen \SI{3e8}{\tesla}
+		math-ohm,
+		range-phrase = -					% Option für Bereichsangabe \SIrange{3}{4}{\tesla}
+		]{siunitx} 						  	
+ 								% Elementar wichtig für Einheiten \siunit{3}{\milli\meter}					% \unit{\tesla}, \num{<Zahl>}
+  
+%===== Grafik/Tabellen-Packages ======
+	\usepackage{xcolor}						% Erlaubt das Verwenden von Farben
+	\usepackage{graphicx} 					% Erlaub das Einbinden von Bildern
+	\usepackage{multirow} 					% Erlaubt multicolumn{3}{c}{Bla}
+	\usepackage{rotating} 					% Erlaub sidewaystable-Umgebung
+	%\usepackage[miktex,subfolder,siunitx]{gnuplottex} % Gnuplot in Latex
+  
+%===== bibliography =====
+	\usepackage[numbers,square]{natbib} 	%Einbinden der Bibliothek mit "[1]" Zitat
+  
+%===== Sonstiges ======
+	\usepackage{url}						% Erlaubt das Einbinden einer URL
+	\usepackage{pdfpages}					% \includepdf{<file>.pdf} wird verfügbar
+	\usepackage[flushmargin,				% Fußnoten bündig mit Seitenrändern
+		hang,									% Hängender Zeilenumbruch bei Fußnoten 
+		bottom]{footmisc}						% Zwingt Fußnoten ans Ende der Seite
+	\usepackage{hyperref} 	% Hyperref-Package verlinkt interne Referenzen
+	\usepackage{lipsum} 	% Für Testzecke \lipsum[1]
+  
+%===== Beamer template - Spezifikationen ======
+	\usepackage{beamerthemetexsx}
+	\setbeamertemplate{mini frames}[box]
+	%\renewcommand{\bibsection}{\section{Literature}}
+
+%==== Informationen ====
+	
+	\title[Miscellaneous]{} 
+	%\subtitle[Optionaler Subtitle]{Optionaler Subtitle des sehr langen Titels der Präsentation}
+	\author[Lars Porth]{Lars Porth} 
+	\institute[Parametriesierte Algorithmen]{Parmaetrisierte Algorithmen Seminar}
+	\date{16.\,11.\,2015}
+	%Titelgraphic
+	%\titlegraphic{\includegraphics[height=2.1cm,keepaspectratio]{Logos/Gefoerdert_vom_BMBF_weiss.pdf}}
+	%Logo on each slide
+	%\logo{
+		%\vspace*{-.25cm} %vertical displacement of logo position
+		%\includegraphics[height=1cm,keepaspectratio]{Logos/Gefoerdert_vom_BMBF_eng.jpg}
+		%\hspace*{.25cm} %horizontal displacement of logo position
+		%}
+	%}
+
+	
+%==== Begin presentation ====
+
+\begin{document}
+
+\begin{frame}[plain,noframenumbering]  %Keine Fußzeile auf erster Seite und keine Nummerierung
+	\titlepage
+\end{frame}
+	
+\addtocounter{framenumber}{-1} %Titelseite wird nicht gezählt im Counter
+
+%\setbeamertemplate{footline}{authorinstitutetitle} %Aktiviere Fußzeile
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Inhaltsverzeichnis}
+	\tableofcontents
+\end{frame}%[pausesections]} 
+
+%---------------------------------------------------------------------
+
+\section{Einf\"uhrung}
+
+\frame{\sectionpage}
+
+%---------------------------------------------------------------------
+
+\subsection{Allgemeines}
+\begin{frame}
+	\frametitle{Einführung} 
+	%\framesubtitle{Folienuntertitel: Nummeriert und nicht nummeriert.} 
+	
+	%\begin{enumerate} 
+	%\item Item 1 
+	%\item Item 2 
+	%\item Item 3 
+	%\end{enumerate}
+	\begin{itemize}
+	\item In Kapitel 6 geht es um verschiedene algorithmischen Werkzeuge, die zu sonst nicht so gut in irgend ein anderes Kapitel gepasst h\"atten.\\
+	\item Als erstes geht es um Expotentialzeit dynamische Programmierung\\
+	\item Als zweites geht es um Ganzahlige Lineare Programmierung \\ 
+	\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------
+%DYNAMISCHE PROGRAMMIERUNG ANFANG
+%---------------------------------------------------------------------
+
+\section{6.1 Dynamische Programmierung über Subsets}
+
+\frame{\sectionpage}
+
+%---------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{6.1 Dynamische Programmierung} 
+	
+	\begin{itemize}
+	\item TODO Hier kommt eine Beschreibung zu dynamischer Programmierung hin.\\ 
+	\end{itemize}
+	
+\end{frame}
+
+
+%---------------------------------------------------------------------
+%SET COVER ANFANG
+%---------------------------------------------------------------------
+\subsection{6.1.1 Set Cover}
+\frame{\subsectionpage}
+
+\begin{frame}
+	\frametitle{Set Cover} 
+	\framesubtitle{Erinnerung} 
+	\begin{alertblock}{Überdeckung}
+		Sei $\mathcal{F}$ eine Familie von Mengen in einem Universum $\mathcal{U}$. Für eine Unterfamilie $\mathcal{F}'\subseteq\mathcal{F}$ und einer Teilmenge $\mathcal{U}'\subseteq\mathcal{U}$ sagen wir, dass $\mathcal{F}'$ $\mathcal{U}'$ überdeckt, wenn jedes Element von $\mathcal{U}'$ zu mindestens einer Menge von $\mathcal{F}'$ gehört $(\mathcal{U}'\subseteq\bigcup\mathcal{F}')$.
+	\end{alertblock}
+	\begin{alertblock}{Set Cover}
+		Im Set Cover Problem ist eine Familie von Mengen $\mathcal{F}$ gegeben in einem Universum $\mathcal{U}$ und eine positive ganze Zahl $k$. Die Aufgabe ist zu überprüfen ob eine Unterfamilie, mit maximal $k$ Elementen, $\mathcal{F}'\subseteq\mathcal{F}$ existiert, so dass $\mathcal{F}'$ $\mathcal{U}$ überdeckt.
+	\end{alertblock}
+\end{frame}
+
+%---------------------------------------------------------------------
+%Theorem 6.1
+%---------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Theorem 6.1}
+	%\framesubtitle{6.1.1 SET COVER}
+	\begin{alertblock}{Theorem 6.1}
+		Gegeben eine Instanz des SET COVER Problems $(\mathcal{U},\mathcal{F},k)$, kann die minimal mögliche Größe einer Unterfamilie $\mathcal{F}'\subseteq \mathcal{F}$, die $\mathcal{U}$ überdeckt, in Zeit $2^{|\mathcal{U}|}(|\mathcal{U}| + |\mathcal{F}|)^{\mathcal{O}(1)}$ gefunden werden.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.1} 
+	\framesubtitle{Beweis} 
+	\begin{itemize}
+	\item Sei $\mathcal{F} = \{F_1, F_2,...,F_{|\mathcal{F}|}\}$\\ 
+	\item Wir definieren die dynamische Programmierungs Tabelle wie folgt:\\
+	\item Für jede Untermenge $X\subseteq\mathcal{U}$ und jede ganze Zahl $0\leq j\leq |\mathcal{F}|$, definieren wir $T[X,j]$ als die minimale Größe einer Untermenge $\mathcal{F}'\subseteq \{F_1,F_2,...,F_j\}$, die $X$ überdeckt. Falls keine solche Teilmenge $\mathcal{F}'$ existiert setzten wir $T[X,j] = +\infty$
+	\item In unserem dynamischen Algorithmus Programm berechnen wir alle $2^{|\mathcal{U}|}(\mathcal{F}+1)$ Werte $T[X,j]$
+	\item Basis Fall: $T[\emptyset,0] = 0$, $T[X,0] = +\infty$, für $X\neq\emptyset$
+	\item Rekusiver Fall: Für $X \subseteq \mathcal{U}$ und $0\leq j\leq |\mathcal{F}|$ zeigen wir, dass $T[X,j] = min(T[X, j-1], 1 + T[X\backslash F_j,j-1])$    
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.1} 
+	\framesubtitle{Beweis} 
+	\begin{itemize}
+	\item $T[X,j] = min(T[X, j-1], 1 + T[X\backslash F_j,j-1])$
+	\item Dafür zeigen wir die Ungleichheit in beide Richtungen
+	\item Für "$\leq$": Sei $\mathcal{F}' \subseteq \{F_1,F_2,...,F_j\}$ eine Familie mit minimaler Größe, die $X$ überdeckt, wir unterscheiden zwei Fälle:
+	\begin{itemize}
+		\item $F_j\notin \mathcal{F}'$, dann ist $\mathcal{F}'$ auch ein zulässiger Kandidat für $T[X,j-1]$
+		\item $F_j\in\mathcal{F}'$, dann ist $\mathcal{F}'\backslash F_j$ ein zulässiger Kandidat für $T[X\backslash F_j, j-1]$ 
+	\end{itemize}	
+	\item Für $\geq$: 
+	\begin{itemize}
+		\item jeder zulässige Kandidat $\mathcal{F}'$ für $T[X,j-1]$ ist auch ein zulässiger Kandidat für $T[X,j]$
+		\item für jeden zulässigen Kandidaten $\mathcal{F}'$ für $T[X\backslash F_j, j-1]$ gilt, dass $\mathcal{F}'\cup F_j$ ein zulässiger Kandidat für $T[X,j]$ ist
+	\end{itemize}	 	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.1} 
+	\framesubtitle{Beweis} 
+	\begin{itemize}
+	\item Mit diesem dynamischen Programm können wir für alle $X\subseteq U$ und $0\leq j\leq |\mathcal{F}|$ den Wert $T[X,j]$ in versprochener Zeit berechnen.
+	\item Der Wert den wir suchen ist $T[\mathcal{U},|\mathcal{F}|]$
+	\end{itemize}
+\end{frame}
+
+
+%---------------------------------------------------------------------
+%STEINER TREE ANFANG
+%---------------------------------------------------------------------
+\subsection{6.1.2 Steiner Tree}
+\frame{\subsectionpage}
+
+\begin{frame}
+	\frametitle{Steiner Tree} 
+	\framesubtitle{Erinnerung} 
+	\begin{alertblock}{Steiner Tree}
+		Sei $G$ ein ungerichteter Graph mit $n$ Knoten und $K\subseteq V(G)$ von Endpunkten (terminals). Ein Steiner Tree für $K$ in $G$ ist ein zusammenhängender Teilgraph $H$ von $G$, der $K$ enthält ($K\subseteq H$)
+	\end{alertblock}
+\end{frame}
+
+
+%---------------------------------------------------------------------
+%Lemma 6.2
+%---------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Lemma 6.2}
+	%\framesubtitle{6.1.1 SET COVER}
+	\begin{alertblock}{Lemma 6.2}
+		Für jedes $D\subseteq K$ von einer Größe von mindestens 2 und jedes $v\in V(G)\backslash K$ gilt folgendes:\\
+		$T[D,v] = \min\limits_{\substack{{u\in V(G)\backslash K}\\{\emptyset\neq D'\varsubsetneq D}}}\{T[D',u] + T[D\backslash D',u] + dist(u,v)\}$
+	\end{alertblock}
+\end{frame}
+
+
+%---------------------------------------------------------------------
+%Theorem 6.3
+%---------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Theorem 6.3}
+	%\framesubtitle{6.1.1 SET COVER}
+	\begin{alertblock}{Theorem 6.3}
+		Steiner Tree kann in Zeit $3^{K}n^{\mathcal{O}(1)}$
+	\end{alertblock}
+\end{frame}
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+
+%\section{Literature}
+\begin{frame}
+\frametitle{Literature}
+\nocite{*}
+\bibliographystyle{alpha}
+\bibliography{beamerbibliography}
+\end{frame}
+
+\end{document}
