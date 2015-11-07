@@ -4,4 +4,4 @@
 \beamer@subsectionintoc {1}{1}{Allgemeines}{4}{0}{1}
 \beamer@sectionintoc {2}{6.1 Dynamische Programmierung \"uber Subsets}{5}{0}{2}
 \beamer@subsectionintoc {2}{1}{6.1.1 Set Cover}{7}{0}{2}
-\beamer@subsectionintoc {2}{2}{6.1.2 Steiner Tree}{14}{0}{2}
+\beamer@subsectionintoc {2}{2}{6.1.2 Steiner Baum}{20}{0}{2}

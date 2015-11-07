@@ -149,8 +149,8 @@
 
 \begin{frame}
 	\frametitle{Set Cover} 
-	\framesubtitle{Erinnerung} 
-	\begin{alertblock}{Überdeckung}
+	%\framesubtitle{Erinnerung} 
+	\begin{alertblock}{Definition: Überdeckung}
 		Sei $\mathcal{F}$ eine Familie von Mengen in einem Universum $\mathcal{U}$. Für eine Unterfamilie $\mathcal{F}'\subseteq\mathcal{F}$ und einer Teilmenge $\mathcal{U}'\subseteq\mathcal{U}$ sagen wir, dass $\mathcal{F}'$ $\mathcal{U}'$ überdeckt, wenn jedes Element von $\mathcal{U}'$ zu mindestens einer Menge von $\mathcal{F}'$ gehört $(\mathcal{U}'\subseteq\bigcup\mathcal{F}')$.
 	\end{alertblock}
 	\begin{alertblock}{Set Cover}
@@ -195,16 +195,22 @@
 	\frametitle{Theorem 6.1} 
 	\framesubtitle{Beweis} 
 	\begin{itemize}
-	\item $T[X,j] = min(T[X, j-1], 1 + T[X\backslash F_j,j-1])$
-	\item Dafür zeigen wir die Ungleichheit in beide Richtungen
-	\item Für $\geq$: Sei $\mathcal{F}' \subseteq \{F_1,F_2,...,F_j\}$ eine Familie mit minimaler Größe, die $X$ überdeckt, wir unterscheiden zwei Fälle:
+	\item Wir wollen zeigen, dass $T[X,j] = min(T[X, j-1], 1 + T[X\backslash F_j,j-1])$
+	\item Dafür zeigen wir, dass in beiden Richtungen Ungleichheit gilt
+	\pause	
+	\item Für $\geq$: Sei $\mathcal{F}' \subseteq \{F_1,F_2,...,F_j\}$ eine Familie mit minimaler Größe, die $X$ überdeckt, wir unterscheiden zwei Fälle:\\
+	\pause
 	\begin{itemize}
 		\item $F_j\notin \mathcal{F}'$, dann ist $\mathcal{F}'$ auch ein zulässiger Kandidat für $T[X,j-1]$
+		\pause
 		\item $F_j\in\mathcal{F}'$, dann ist $\mathcal{F}'\backslash F_j$ ein zulässiger Kandidat für $T[X\backslash F_j, j-1]$ 
-	\end{itemize}	
-	\item Für $\leq$: 
+	\end{itemize}
+	\pause	
+	\item Für $\leq$:
+	\pause
 	\begin{itemize}
 		\item jeder zulässige Kandidat $\mathcal{F}'$ für $T[X,j-1]$ ist auch ein zulässiger Kandidat für $T[X,j]$
+		\pause
 		\item für jeden zulässigen Kandidaten $\mathcal{F}'$ für $T[X\backslash F_j, j-1]$ gilt, dass $\mathcal{F}'\cup F_j$ ein zulässiger Kandidat für $T[X,j]$ ist
 	\end{itemize}	 	
 	\end{itemize}
@@ -219,21 +225,71 @@
 	\end{itemize}
 \end{frame}
 
+%---------------------------------------------------------------------
+%SET COVER ENDE
+%---------------------------------------------------------------------
+
 
 %---------------------------------------------------------------------
-%STEINER TREE ANFANG
+%STEINER BAUM ANFANG
 %---------------------------------------------------------------------
-\subsection{6.1.2 Steiner Tree}
+\subsection{6.1.2 Steiner Baum}
 \frame{\subsectionpage}
 
 \begin{frame}
-	\frametitle{Steiner Tree} 
-	\framesubtitle{Erinnerung} 
-	\begin{alertblock}{Steiner Tree}
-		Sei $G$ ein ungerichteter Graph mit $n$ Knoten und $K\subseteq V(G)$ von Endpunkten (terminals). Ein Steiner Tree für $K$ in $G$ ist ein zusammenhängender Teilgraph $H$ von $G$, der $K$ enthält ($K\subseteq H$)
+	\frametitle{Steiner Baum} 
+	%\framesubtitle{Erinnerung} 
+	\begin{alertblock}{Steiner Baum}
+		Sei $G$ ein ungerichteter Graph mit $n$ Knoten und $K\subseteq V(G)$ von Endpunkten (terminals). Ein Steiner Baum für $K$ in $G$ ist ein zusammenhängender Teilgraph $H$ von $G$, der $K$ enthält ($K\subseteq H$)
+	\end{alertblock}
+	
+	\begin{alertblock}{Steiner Baum Problem}
+	Im (gewichteten) Steiner Baum Problem bekommt man einen ungerichteten Graphen $G$, eine Gewichtungsfunktion $w:E(G)\rightarrow\mathbb{R}_{>0}$ und eine Teilmenge von Endpunkten $K\subseteq V(G)$ gegeben. Das Ziel ist es einen Steiner Baum $H$ für $K$ in $G$ zu finden, in dem $w(H) = \sum_{e\in V(H)}w(e)$ minimal ist.
 	\end{alertblock}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Steiner Baum Problem} 
+	\framesubtitle{Dynamischer Algorithmus} 
+	\begin{itemize}
+	\item Das Ziel ist es einen dynamischen Algorithmus zu entwickeln, der in Zeit $3^{|K|}n^{\mathcal{O}(1)}$ $(n = |V(G)|)$ das Steiner Baum Problem löst. 
+	\end{itemize}
+	\begin{alertblock}{Notation: $dist(v,u)$}
+	Für ein Knotenpaar $u,v\in V(G)$, notieren wir die Kosten des kürzesten Pfad von $v$ nach $u$ als $dist(v,u)$. 	
+	\end{alertblock}
+	\begin{itemize}
+	\item Erinnerung $dist(v,u)$ kann durch Algorithmen, wie der kürzeste Pfad Algorithmus von Dijkstra, in Polynomialzeit bestimmt werden. 
+	\end{itemize}		
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Steiner Baum Problem} 
+	\framesubtitle{Vorverarbeitung} 
+	\begin{itemize}
+	\item Wir nehmen an, dass $|K| > 1 $, weil sonst die Instanz des Problems trivial wäre. 
+	\item Ohne Einschränkungen nehmen weiterhin an, dass $G$ verbunden ist.
+	\item Als letztes setzten wir voraus, dass jeder Endpunkt aus $K$ in $G$ genau Grad 1 hat und sein einziger Nachbar kein Knoten aus $K$ ist.
+	\begin{itemize}
+		\item Um diese Bedingung zu erfüllen erzeugen wir für jeden Knoten $t\in K$ einen neuen Knoten $t'$ und eine Kannte $tt'$
+	\end{itemize}
+	\end{itemize}		
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Steiner Baum Problem} 
+	\framesubtitle{Dynamischer Algorithmus} 
+	\begin{itemize}
+	\item Wir definieren nun die dynamische Tabelle: Für jede nicht leere Teilmenge $D\subset K$ und jeden Knoten $v\in V(G)\backslash K$ sei $T[D,v]$ das minimale Gewicht von einem Steiner Baum für $D\cup\{v\}$ in $G$.
+	\item Als Basisfall betrachten wir die Teilmengen $D\subset K$ für die gilt $|D| = 1$. Dann gilt:
+	\begin{itemize}
+		\item Sei $D = \{t\}$, dann ist einem Steiner Baum mit minimalem Gewicht von $D\cup\{v\} = \{t,v\}$.
+		\item Somit ist der Wert für $T[\{t\},v] = dist(t,v)$.
+	\end{itemize}
+	\end{itemize}		
+
+\end{frame}
 
 %---------------------------------------------------------------------
 %Lemma 6.2
@@ -257,7 +313,7 @@
 	\frametitle{Theorem 6.3}
 	%\framesubtitle{6.1.1 SET COVER}
 	\begin{alertblock}{Theorem 6.3}
-		Steiner Tree kann in Zeit $3^{K}n^{\mathcal{O}(1)}$
+		Steiner Baum kann in Zeit $3^{K}n^{\mathcal{O}(1)}$
 	\end{alertblock}
 \end{frame}
 %---------------------------------------------------------------------

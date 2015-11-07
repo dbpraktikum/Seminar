@@ -29,23 +29,29 @@
 \headcommand {\beamer@framepages {10}{10}}
 \headcommand {\slideentry {2}{1}{5}{11/11}{6.1.1 Set Cover}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {2}{1}{6}{12/12}{6.1.1 Set Cover}{0}}
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {2}{1}{7}{13/13}{6.1.1 Set Cover}{0}}
-\headcommand {\beamer@framepages {13}{13}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{14}{6.1.2 Steiner Tree}}\headcommand {\beamer@subsectionpages {7}{13}}
-\headcommand {\slideentry {2}{2}{1}{14/14}{6.1.2 Steiner Tree}{0}}
-\headcommand {\beamer@framepages {14}{14}}
-\headcommand {\slideentry {2}{2}{2}{15/15}{6.1.2 Steiner Tree}{0}}
-\headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {2}{2}{3}{16/16}{6.1.2 Steiner Tree}{0}}
-\headcommand {\beamer@framepages {16}{16}}
-\headcommand {\slideentry {2}{2}{4}{17/17}{6.1.2 Steiner Tree}{0}}
-\headcommand {\beamer@framepages {17}{17}}
-\headcommand {\slideentry {2}{2}{5}{18/18}{6.1.2 Steiner Tree}{0}}
-\headcommand {\beamer@framepages {18}{18}}
-\headcommand {\beamer@partpages {1}{18}}
-\headcommand {\beamer@subsectionpages {14}{18}}
-\headcommand {\beamer@sectionpages {5}{18}}
-\headcommand {\beamer@documentpages {18}}
-\headcommand {\def \inserttotalframenumber {17}}
+\headcommand {\slideentry {2}{1}{6}{12/18}{6.1.1 Set Cover}{0}}
+\headcommand {\beamer@framepages {12}{18}}
+\headcommand {\slideentry {2}{1}{7}{19/19}{6.1.1 Set Cover}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{20}{6.1.2 Steiner Baum}}\headcommand {\beamer@subsectionpages {7}{19}}
+\headcommand {\slideentry {2}{2}{1}{20/20}{6.1.2 Steiner Baum}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {2}{2}{2}{21/21}{6.1.2 Steiner Baum}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\slideentry {2}{2}{3}{22/22}{6.1.2 Steiner Baum}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {2}{2}{4}{23/23}{6.1.2 Steiner Baum}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {2}{2}{5}{24/24}{6.1.2 Steiner Baum}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {2}{2}{6}{25/25}{6.1.2 Steiner Baum}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\slideentry {2}{2}{7}{26/26}{6.1.2 Steiner Baum}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\slideentry {2}{2}{8}{27/27}{6.1.2 Steiner Baum}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\beamer@partpages {1}{27}}
+\headcommand {\beamer@subsectionpages {20}{27}}
+\headcommand {\beamer@sectionpages {5}{27}}
+\headcommand {\beamer@documentpages {27}}
+\headcommand {\def \inserttotalframenumber {20}}
