@@ -61,7 +61,7 @@
 
 %==== Informationen ====
 	
-	\title[Miscellaneous]{} 
+	\title[Miscellaneous]{Kapitel 6 Miscellaneous} 
 	%\subtitle[Optionaler Subtitle]{Optionaler Subtitle des sehr langen Titels der Präsentation}
 	\author[Lars Porth]{Lars Porth} 
 	\institute[Parametriesierte Algorithmen]{Parmaetrisierte Algorithmen Seminar}
@@ -176,7 +176,15 @@
 	\begin{itemize}
 	\item Sei $\mathcal{F} = \{F_1, F_2,...,F_{|\mathcal{F}|}\}$\\ 
 	\item Wir definieren die dynamische Programmierungs Tabelle wie folgt:\\
-	\item Für jede Untermenge $X\subseteq\mathcal{U}$ und jede ganze Zahl $0\leq j\leq |\mathcal{F}|$, definieren wir $T[X,j]$ als die minimale Größe einer Untermenge $\mathcal{F}'\subseteq \{F_1,F_2,...,F_j\}$, die $X$ überdeckt. Falls keine solche Teilmenge $\mathcal{F}'$ existiert setzten wir $T[X,j] = +\infty$
+	\item Für jede Untermenge $X\subseteq\mathcal{U}$ und jede ganze Zahl $0\leq j\leq |\mathcal{F}|$, definieren wir $T[X,j]$ als die minimale Größe einer Untermenge $\mathcal{F}'\subseteq \{F_1,F_2,...,F_j\}$, die $X$ überdeckt.
+	\item Falls keine solche Teilmenge $\mathcal{F}'$ existiert setzten wir $T[X,j] = +\infty$
+		\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.1} 
+	\framesubtitle{Beweis} 
+	\begin{itemize}
 	\item In unserem dynamischen Algorithmus Programm berechnen wir alle $2^{|\mathcal{U}|}(\mathcal{F}+1)$ Werte $T[X,j]$
 	\item Basis Fall: $T[\emptyset,0] = 0$, $T[X,0] = +\infty$, für $X\neq\emptyset$
 	\item Rekusiver Fall: Für $X \subseteq \mathcal{U}$ und $0\leq j\leq |\mathcal{F}|$ zeigen wir, dass $T[X,j] = min(T[X, j-1], 1 + T[X\backslash F_j,j-1])$    
@@ -189,12 +197,12 @@
 	\begin{itemize}
 	\item $T[X,j] = min(T[X, j-1], 1 + T[X\backslash F_j,j-1])$
 	\item Dafür zeigen wir die Ungleichheit in beide Richtungen
-	\item Für "$\leq$": Sei $\mathcal{F}' \subseteq \{F_1,F_2,...,F_j\}$ eine Familie mit minimaler Größe, die $X$ überdeckt, wir unterscheiden zwei Fälle:
+	\item Für $\geq$: Sei $\mathcal{F}' \subseteq \{F_1,F_2,...,F_j\}$ eine Familie mit minimaler Größe, die $X$ überdeckt, wir unterscheiden zwei Fälle:
 	\begin{itemize}
 		\item $F_j\notin \mathcal{F}'$, dann ist $\mathcal{F}'$ auch ein zulässiger Kandidat für $T[X,j-1]$
 		\item $F_j\in\mathcal{F}'$, dann ist $\mathcal{F}'\backslash F_j$ ein zulässiger Kandidat für $T[X\backslash F_j, j-1]$ 
 	\end{itemize}	
-	\item Für $\geq$: 
+	\item Für $\leq$: 
 	\begin{itemize}
 		\item jeder zulässige Kandidat $\mathcal{F}'$ für $T[X,j-1]$ ist auch ein zulässiger Kandidat für $T[X,j]$
 		\item für jeden zulässigen Kandidaten $\mathcal{F}'$ für $T[X\backslash F_j, j-1]$ gilt, dass $\mathcal{F}'\cup F_j$ ein zulässiger Kandidat für $T[X,j]$ ist
