@@ -4,4 +4,4 @@
 \beamer@subsectionintoc {1}{1}{6.1.1 Set Cover}{4}{0}{1}
 \beamer@subsectionintoc {1}{2}{6.1.2 Steiner Baum}{17}{0}{1}
 \beamer@sectionintoc {2}{6.2 Ganzzahlige Lineare Programmierung}{28}{0}{2}
-\beamer@subsectionintoc {2}{1}{6.3.1 Das Beispiel der Unausgewogenheit}{35}{0}{2}
+\beamer@subsectionintoc {2}{1}{6.2.1 Das Beispiel der Unausgewogenheit}{35}{0}{2}
