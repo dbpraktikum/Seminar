@@ -1,4 +1,4 @@
-\documentclass[xcolor={usenames,dvipsnames}, 
+  \documentclass[xcolor={usenames,dvipsnames}, 
 	hyperref={
 	colorlinks=true, 						% Internetseiten werden farblich hervorgehoben
 	linkcolor=black, 						% Farbe für interne Referenzen
@@ -98,15 +98,15 @@
 
 %---------------------------------------------------------------------
 
-\section{Einf\"uhrung}
+%\section{Einführung}
 
-\frame{\sectionpage}
+%\frame{\sectionpage}
 
 %---------------------------------------------------------------------
 
-\subsection{Allgemeines}
-\begin{frame}
-	\frametitle{Einführung} 
+%\subsection{Allgemeines}
+%\begin{frame}
+%	\frametitle{Einführung} 
 	%\framesubtitle{Folienuntertitel: Nummeriert und nicht nummeriert.} 
 	
 	%\begin{enumerate} 
@@ -114,31 +114,31 @@
 	%\item Item 2 
 	%\item Item 3 
 	%\end{enumerate}
-	\begin{itemize}
-	\item In Kapitel 6 geht es um verschiedene algorithmischen Werkzeuge, die zu sonst nicht so gut in irgend ein anderes Kapitel gepasst h\"atten.\\
-	\item Als erstes geht es um Expotentialzeit dynamische Programmierung\\
-	\item Als zweites geht es um Ganzahlige Lineare Programmierung \\ 
-	\end{itemize}
-\end{frame}
+%	\begin{itemize}
+%	\item In Kapitel 6 geht es um verschiedene algorithmischen Werkzeuge, die zu sonst nicht so gut in irgend ein anderes Kapitel gepasst h\"atten.\\
+%	\item Als erstes geht es um Expotentialzeit dynamische Programmierung\\
+%	\item Als zweites geht es um Ganzahlige Lineare Programmierung \\ 
+%	\end{itemize}
+%\end{frame}
 
 %---------------------------------------------------------------------
 %DYNAMISCHE PROGRAMMIERUNG ANFANG
 %---------------------------------------------------------------------
 
-\section{6.1 Dynamische Programmierung über Subsets}
+\section{6.1 Dynamische Programmierung über Teilmengen}
 
 \frame{\sectionpage}
 
 %---------------------------------------------------------------------
 
-\begin{frame}
-	\frametitle{6.1 Dynamische Programmierung} 
+%\begin{frame}
+%	\frametitle{6.1 Dynamische Programmierung} 
 	
-	\begin{itemize}
-	\item TODO Hier kommt eine Beschreibung zu dynamischer Programmierung hin.\\ 
-	\end{itemize}
+%	\begin{itemize}
+%	\item TODO Hier kommt eine Beschreibung zu dynamischer Programmierung hin.\\ 
+%	\end{itemize}
 	
-\end{frame}
+\%end{frame}
 
 
 %---------------------------------------------------------------------
@@ -187,7 +187,7 @@
 	\begin{itemize}
 	\item In unserem dynamischen Algorithmus Programm berechnen wir alle $2^{|\mathcal{U}|}(\mathcal{F}+1)$ Werte $T[X,j]$
 	\item Basis Fall: $T[\emptyset,0] = 0$, $T[X,0] = +\infty$, für $X\neq\emptyset$
-	\item Rekusiver Fall: Für $X \subseteq \mathcal{U}$ und $0\leq j\leq |\mathcal{F}|$ zeigen wir, dass $T[X,j] = min(T[X, j-1], 1 + T[X\backslash F_j,j-1])$    
+	\item Rekusiver Fall: Für $X \subseteq \mathcal{U}$ und $0< j\leq |\mathcal{F}|$ zeigen wir, dass $T[X,j] = min(T[X, j-1], 1 + T[X\backslash F_j,j-1])$    
 	\end{itemize}
 \end{frame}
 
@@ -220,7 +220,7 @@
 	\frametitle{Theorem 6.1} 
 	\framesubtitle{Beweis} 
 	\begin{itemize}
-	\item Mit diesem dynamischen Programm können wir für alle $X\subseteq U$ und $0\leq j\leq |\mathcal{F}|$ den Wert $T[X,j]$ in versprochener Zeit berechnen.
+	\item Mit diesem dynamischen Programm können wir für alle $X\subseteq U$ und $0\leq j\leq |\mathcal{F}|$ den Wert $T[X,j]$ in versprochener Zeit $2^{|\mathcal{U}|}(|\mathcal{U}| + |\mathcal{F}|)^{\mathcal{O}(1)}$ berechnen.
 	\item Der Wert den wir suchen ist $T[\mathcal{U},|\mathcal{F}|]$
 	\end{itemize}
 \end{frame}
@@ -240,7 +240,7 @@
 	\frametitle{Steiner Baum} 
 	%\framesubtitle{Erinnerung} 
 	\begin{alertblock}{Steiner Baum}
-		Sei $G$ ein ungerichteter Graph mit $n$ Knoten und $K\subseteq V(G)$ von Endpunkten (terminals). Ein Steiner Baum für $K$ in $G$ ist ein zusammenhängender Teilgraph $H$ von $G$, der $K$ enthält ($K\subseteq H$)
+		Sei $G$ ein ungerichteter Graph mit $n$ Knoten und $K\subseteq V(G)$ eine Menge von Endpunkten (terminals) aus $G$. Ein Steiner Baum für $K$ in $G$ ist ein zusammenhängender Teilgraph $H$ von $G$, der $K$ enthält ($K\subseteq H$)
 	\end{alertblock}
 	
 	\begin{alertblock}{Steiner Baum Problem}
@@ -304,6 +304,33 @@
 	\end{alertblock}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Lemma 6.2}
+	\framesubtitle{Beweisidee}
+	\begin{itemize}
+	\item Man zeigt wieder die Ungleichheit in beide Richtungen.
+	\item Für $\leq$:
+	\begin{itemize}
+	\item Fixiere $u\in V(G)$ und $\emptyset \neq D'\subsetneq D$
+	\item Sei $H_1$ der Baum, der den Wert $T[D',u]$ bestimmt, $H_2$ der Baum, der den Wert $T[D\backslash D',u]$ bestimmt, und $P$ der kürzeste Pfad zwischen $v$ und $u$.
+	\item $w(H_1\cup H_2\cup P) \leq w(H_1) + w(H_2) +w(P) = T[D',u] + T[D\backslash D',u] + dist(u,v))$
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lemma 6.2}
+	\framesubtitle{Beweisidee}
+	\begin{itemize}
+	\item Für $\geq$:
+	\begin{itemize}
+	\item Sei $H$ ein Steiner Baum für $D\cup\{v\}$ in G mit minimalem Gewicht, also $w(H) = T[D,v]$.\\
+	\includegraphics[scale=0.4]{Fig6_1.png}\\	
+	\item $T[D,v] = w(H) = T[D',u_0] + T[D\backslash D',u_0] + dist(v,u_0)\geq \min\limits_{\substack{{u\in V(G)\backslash K}\\{\emptyset\neq D'\varsubsetneq D}}}\{T[D',u] + T[D\backslash D',u] + dist(u,v)\}$
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
 
 %---------------------------------------------------------------------
 %Theorem 6.3
@@ -313,20 +340,234 @@
 	\frametitle{Theorem 6.3}
 	%\framesubtitle{6.1.1 SET COVER}
 	\begin{alertblock}{Theorem 6.3}
-		Steiner Baum kann in Zeit $3^{K}n^{\mathcal{O}(1)}$
+		Das Steiner Baum Problem kann in Zeit $3^{K}n^{\mathcal{O}(1)}$ gelöst werden.
 	\end{alertblock}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.3}
+	\framesubtitle{Beweis}
+	\begin{itemize}
+	\item Sei $(G,w,K)$ eine Instanz vom Steiner Baum Problem nach den Vorverarbeitungsschritten.
+	\item Wir berechnen alle werte von $T[D,v]$ durch erhöhen der Kardinalitäten von $D$.
+	\item Um im allgemeinen Fall $T[D,v]$ berechnen zu können benötigen wir die Werte $T[D',u]$ und $T[D\backslash D', u]$
+	\item Auf die Art wie in Lemma 6.2 beschrieben kann man für feste Werte $D$ und $v$ $T[D,v]$ in Zeit, $2^{|D|}n^{\mathcal{O}(1)}$ berechnen.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.3}
+	\framesubtitle{Beweis}
+	\begin{itemize}
+	\item Als gesamt Laufzeit des Algorithmus ergibt sich:\\
+	$\sum\limits_{v\in V(G)\backslash K}\sum\limits_{D\subseteq K}2^{|D|}n^{\mathcal{O}(1)}\leq n\sum\limits_{j=2}^{|K|}\binom{|K|}{j} 2^{j}n^{\mathcal{O}(1)} = 3^{|K|}n^{\mathcal{O}(1)}$
+	\item Wenn die Vorverarbeitungsschritte durchgeführt worden sind, enthält jeder Steiner Baum von $K$ in $V(G)$ mindestens einen Steiner Punkt (Punkt aus $V(G)\backslash K$) und daher entspricht $\min_{v\in V(G)\backslash K}T[K,v]$ dem Wert des minimalen Steiner Baum für $K$ in $G$.
+	\end{itemize}
+\end{frame}
+%---------------------------------------------------------------------
+%STEINER BAUM ENDE
 %---------------------------------------------------------------------
 
+%---------------------------------------------------------------------
+%DYNAMISCHE PROGRAMMIERUNG ENDE
+%---------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------
+%LINEARE PROGRAMIERUNG ANFANG
+%---------------------------------------------------------------------
+\section{6.2 Ganzzahlige Lineare Programmierung}
+\frame{\sectionpage}
+
+
+%---------------------------------------------------------------------
+%THEOREM 6.4
+%---------------------------------------------------------------------
+\begin{frame}
+	\frametitle{Ganzzahlige Lineare Programmierungs Machbarkeit}
+	%\framesubtitle{6.1.1 SET COVER}
+	\begin{alertblock}{Definition: Ganzzahlige Lineare Programmierungs Machbarkeit}
+		Beim Ganzzahligen Linearen Programmierungs Machbarkeits Problem (Integer Linear Programming Feasibility Problem) bekommt man ein $p$ Variablen $x_1,x_2,...,x_p$ und eine Menge ab $m$ Ungleichungen in der Form:\\
+		\begin{tabular}{lc}
+			\hspace{20mm} & $a_{1,1}x_1+a_{1,2}x_2+...+a_{1,p}x_p\leq b_1$\\
+			& $\vdots$\\
+		& $a_{m,1}x_1+a_{m,2}x_2+...+a_{m,p}x_p\leq b_m$\\
+		\end{tabular}\\
+		Wobei $a_{i,j}$, $b_j$ und $x_i$ ganze Zahlen sein müssen.\\
+		Das Ziel ist es herauszufinden ob man eine Belegung für die $x_i$ finden kann, so dass alle Ungleichungen erfüllt sind.\\
+			\end{alertblock}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.4}
+	%\framesubtitle{6.1.1 SET COVER}		
+	\begin{alertblock}{Theorem 6.4}
+		Eine Ganzzahlige Lineare Programmierungs Machbarkeits Instanz der Größe $L$ mit $p$ Variablen kann mit $\mathcal{O}(p^{2.5p+o(p)}\cdot L)$ arithmetischen Operationen und mit Platz polynomiell in $L$ gelöst werden.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}
+\begin{alertblock}{Definition: Ganzzahliges Lineares Programmierungs Problem}
+		Beim Ganzzahligen Linearen Programmierungs Problem, bekommt man eine Instanz des Ganzzahlige Lineare Programmierungs Machbarkeits gegeben (z.B als Matrix $A\in\mathbb{Z}^{m\times p}$ und einem Vektor $b\in\mathbb{Z}^p$) und zusätzlich noch einen Vektor $c\in\mathbb{Z}^p$.\\
+		Das Ziel ist es einen Vektor $x\in\mathbb{Z}^p$ zu finden, der alle alle Ungleichungen in $Ax\leq b$ erfüllt und die objective function $c\cdot x$ minimiert. 
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.5}
+	%\framesubtitle{6.1.1 SET COVER}		
+	\begin{alertblock}{Theorem 6.5}
+		Eine Ganzzahlige Lineare Programmierungs Instanz (Linear Integer Programming Instance) der Größe $L$ mit $p$ Variablen kann mit $\mathcal{O}(p^{2.5p+o(p)}\cdot (L + \log M_x)(\log(M_xM_c)))$ arithmetischen Operationen und mit Platz polynomiell in $L + \log M_x$ gelöst werden. %Wobei $M_x$ eine obere Schranke für den maximalen Betrag, den eine Variable in einer Lösung annehmen kann ist, und $M_c$ ist der Betrag des betragmäßig größten Koeffizienten in Vektor $c$.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.5}
+	\framesubtitle{Beweis}	
+	\begin{itemize}
+	\item Wir stellen fest, dass der Betrag des Werts der objective function maximal $pM_xM_c$ ist, solange der maximale Betrag der Variablen $M_x$ ist.
+	\item Wir wenden nun Binäre Suche an um den minimalen Wert der objective function zu finden.
+	\item Dafür fügen wir zur Instanz des Machbarkeit Problem die Ungleichung $cx\leq t$ hinzu, wobei t ein fester Wert ist für den gilt $-pM_xM_c\leq t\leq pM_xM_c$. Und wenden darauf einen Algorithmus, der Theorem 6.4 erfüllt an.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Theorem 6.5}
+	\framesubtitle{Beweis}	
+	\begin{itemize}
+	\item Die Instanz hat die Größe $\mathcal{O}(L+p\log(pM_xM_c)) = \mathcal{O}(p(L+\log M_x))$ und daher Läuft der Algorithmus von Theorem 6.4 in Zeit $\mathcal{O}(p^{2.5p+o(p)}\cdot (L + \log M_x))$.
+	\item Durch anwenden der binären Suche mit $t$ finden wir so in versprochener Zeit $\mathcal{O}(p^{2.5p+o(p)}\cdot (L + \log M_x)(\log(M_xM_c)))$ eine optimale Lösung $t_0$ des Linearen Programm.
+	\end{itemize}
+\end{frame}
+
+%---------------------------------------------------------------------
+%THE EXAMPE OF IMBALANCE ANFANG
+%---------------------------------------------------------------------
+\subsection{6.3.1 Das Beispiel der Unausgewogenheit}
+\frame{\subsectionpage}
+
+\begin{frame}
+	\frametitle{Das Beispiel der Unausgewogenheit}
+	%\framesubtitle{Beweis}	
+	\begin{alertblock}{Definition: Ordung}
+	Sei $G$ ein ungerichteter Graph mit $n$ Knoten. Eine Ordnung von $V(G)$ ist eine bijektive Funktion $\pi : V(G)\rightarrow \{1,2,...,n\}$
+	\end{alertblock}
+	\begin{alertblock}{Definition: Imbalance}
+	Für $v\in V(G)$ definieren wir $L_\pi(v) = \{u\in N(v) : \pi(u) < \pi(v)\}$ und $R_\pi(v) = \{u\in N(v) : \pi(u) > \pi(v)\}$
+	Wir definieren die Imbalance an Knoten $v$ als $\iota_\pi(v) = ||L_\pi(v)|-|R_\pi(v)||$ und die Imbalance von der Ordnung $\pi$ als $\iota(\pi) = \sum_{v\in V(G)}\iota_\pi(v)$.
+	\end{alertblock}
+	\begin{itemize}
+	\item Beim Imbalance Problem wollen wir nun eine Ordnung $\pi$ finden, so dass $\iota(\pi)$ minimal ist.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parametrisierung}
+	%\framesubtitle{Beweis}	
+	\begin{itemize}
+	\item Wir werden das Imbalance Problem durch die Größe einer Knoten Überdeckung des Graphen parametrisieren.
+	\item Wir nehmen an wir bekommen einen Graphen $G$ zusammen mit seiner Knotenüberdeckung $X$ der Größe $k$
+	\begin{itemize}
+		\item In diesem Fall wäre es nicht unbedingt notwendig die Knoten Überdeckung mit übergeben zu bekommen, da 2-Approximations Algorithmen oder FPT Algorithmen für das Knoten Überdeckungs Problem bekannt sind.
+	\end{itemize}	 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parametrisierung}
+	%\framesubtitle{Beweis}	
+	\begin{itemize}
+	\item Im Folgenden werden wir zeigen, wie man Theorem 6.5 einsetzen kann um einen FPT Algorithmus für das Imbalance Problem parametrisiert durch die Größe der gegebenen Knotenüberdeckung von $G$.
+	\item Um die minimale Ordnung $\iota_\pi$ zu finden werden wir für alle möglichen Ordnungen $\pi_X : X\rightarrow \{1,2,...,k\}$ der gegebenen Knotenüberdeckung, werden wir die beste Ordnung $\pi$ finden, die mit $\pi_X$ übereinstimmt.
+	\begin{itemize}
+	\item Wir sagen, dass $\pi_X$ mit $\pi$ übereinstimmt, wenn gilt $\pi_X(u) < \pi_X(v)$, genau dann wenn $\pi(u) < \pi(v)$.
+	\end{itemize}	    
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parametrisierung}
+	%\framesubtitle{Beweis}	
+	\begin{itemize}
+	\item Daher können wir annehmen, dass eine optimale Ordnung $\pi$ existiert, so dass für $X = \{u_1,u_2,...,u_k\}$ gilt: $\pi(u_1) < \pi(u_2) < ... < \pi(u_k)$.
+	\item Wir definieren $X_i = \{u_1,u_2,...,u_i\}$ für alle $0\leq i\leq k$
+	\item Weil $X$ eine Knoten Überdeckung von $G$ ist, sind die Knoten $I = V(G)\backslash X$ unabhängig voneinander und wir können jeden Knoten aus $I$ einem Typ zuweisen.
+	\end{itemize}
+	\begin{alertblock}{Definition: Typ}
+	Der Typ eines Knotens $v\in I$ ist die Menge $N(v)\subseteq X$. Für einen Typ $S\subseteq X$ ist die Menge I(S) die Menge aller Knoten in $I$ von Typ $S$.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parametrisierung}
+	%\framesubtitle{Beweis}	
+	\begin{itemize}
+	\item Jeder Knoten aus $I$ ist entweder zwischen zwei Knoten aus $X$, links vom Knoten $u_1$ oder rechts vom Knoten $u_k$
+	\item Wir sagen, dass ein Knoten $v\in I$ an Position 0 ist, wenn $\pi(v) < \pi(u_1)$ und dass ein Knoten an Position $i$ ist, wenn $i$ die größte Zahl ist, so dass $\pi(u_i) < \pi(v)$   
+	\item Wir notieren alle Mengen an Position $i$ als $L_i$	
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parametrisierung}
+	%\framesubtitle{Beweis}	
+	\begin{itemize}
+	\item Die Aufgabe eine optimale Permutation zu finden lässt sich nun in zwei Teile aufteilen:
+	\begin{itemize}
+		\item Zerteilen der Menge $I$ in $L_0,...,L_k$.
+		\item Eine optimale innere Ordnung an allen Positionen zu finden. 
+	\end{itemize}
+	\item Das Ziel ist das Zerteilen von $I$ in Mengen $L_0,...,L_k$ als Ganzahliges Lineares Problem zu formulieren.
+	\end{itemize}
+\end{frame}			
+
+\begin{frame}
+	\frametitle{Formulierung des Linearen Probelems}
+	%\framesubtitle{Beweis}	
+	\begin{itemize}
+	\item Für die Anzahl eines Typen $S$ an der Position $i$ führen wir die Variable $x_S^i$ ein.
+	\item Wir definieren für alle $u_i\in X$ eine Variable $y_i$ als untere Schranke für die Imbalance von $u_i$.
+	\item Außerdem definieren wir für alle $u_i$ aus $X$ $e_i = |N(u_i)\cap X_{i-1}| - |N(u_i)\cap (X\backslash X_{i-1})|$
+	\item Dies führt uns zu einer Bedingung für alle $u_i$:\\
+	\hspace{20mm} $y_i\geq \left\vert {e_i + \sum\limits_{\substack{{S\subseteq X}\\{u_i\in S}}}(\sum\limits_{j=0}^{i-1}x_S^j - \sum\limits_{j=i}^{k}x_S^j)}\right\vert$
+	\item Als letztes definieren wir $z_S^i = ||S\cap X_i| - |S\cap (X\backslash X_i)||$ als Konstante für die Imbalance eines Knoten von Typ $S$, wenn er an Position $i$ platziert wird.
+	\end{itemize}
+\end{frame}	
+	
+\begin{frame}
+	\frametitle{Formulierung des Linearen Probelems}
+	%\framesubtitle{Beweis}	
+	\begin{tabular}{lll}
+	$\min$ & $\sum\limits_{i = 1}^k y_i + \sum\limits_{i=0}^k \sum\limits_{S\subseteq X} z_S^i x_S^i$ &\\
+	s.t. & $\sum\limits_{i=0}^k x_S^i = |I(S)|$ & $\forall S\subseteq X$\\
+	& $y_i\geq {e_i + \sum\limits_{\substack{{S\subseteq X}\\{u_i\in S}}}(\sum\limits_{j=0}^{i-1}x_S^j - \sum\limits_{j=i}^{k}x_S^j)}$ & $\forall 1\leq i\leq k$\\
+	& $y_i\geq {-e_i - \sum\limits_{\substack{{S\subseteq X}\\{u_i\in S}}}(\sum\limits_{j=0}^{i-1}x_S^j - \sum\limits_{j=i}^{k}x_S^j)}$ & $\forall 1\leq i\leq k$\\
+	& $x_S^i \geq 0$ & $\forall 0\leq i\leq k, S\subseteq X$
+	\end{tabular}
+	
+\end{frame}		
+
+\begin{frame}
+	\frametitle{Formulierung des Linearen Probelems}
+	%\framesubtitle{Beweis}	
+	\begin{itemize}
+	\item Durch anwenden des Theorems 6.5 kann man dieses Lineare Problem parametrisiert lösen.
+	\item Daher folgt: Das Imbalance Problem, parametrisiert durch die Größe einer Knoten Überdeckung des Graphen ist FPT.
+	\end{itemize}
+	
+\end{frame}		
+%---------------------------------------------------------------------
+%LINEARE PROGRAMMIERUNG ENDE
+%---------------------------------------------------------------------
 
 %---------------------------------------------------------------------
 
 %\section{Literature}
-\begin{frame}
-\frametitle{Literature}
-\nocite{*}
-\bibliographystyle{alpha}
-\bibliography{beamerbibliography}
-\end{frame}
+%\begin{frame}
+%\frametitle{Literature}
+%\nocite{*}
+%\bibliographystyle{alpha}
+%\bibliography{beamerbibliography}
+%\end{frame}
 
 \end{document}
