@@ -64,7 +64,7 @@
 	\title[Miscellaneous]{Kapitel 6 Miscellaneous} 
 	%\subtitle[Optionaler Subtitle]{Optionaler Subtitle des sehr langen Titels der Präsentation}
 	\author[Lars Porth]{Lars Porth} 
-	\institute[Parametriesierte Algorithmen]{Parmaetrisierte Algorithmen Seminar}
+	\institute[Parametrisierte Algorithmen]{Parametrisierte Algorithmen Seminar}
 	\date{16.\,11.\,2015}
 	%Titelgraphic
 	%\titlegraphic{\includegraphics[height=2.1cm,keepaspectratio]{Logos/Gefoerdert_vom_BMBF_weiss.pdf}}
@@ -340,7 +340,7 @@
 	\frametitle{Theorem 6.3}
 	%\framesubtitle{6.1.1 SET COVER}
 	\begin{alertblock}{Theorem 6.3}
-		Das Steiner Baum Problem kann in Zeit $3^{K}n^{\mathcal{O}(1)}$ gelöst werden.
+		Das Steiner Baum Problem kann in Zeit $3^{|K|}n^{\mathcal{O}(1)}$ gelöst werden.
 	\end{alertblock}
 \end{frame}
 
@@ -349,7 +349,7 @@
 	\framesubtitle{Beweis}
 	\begin{itemize}
 	\item Sei $(G,w,K)$ eine Instanz vom Steiner Baum Problem nach den Vorverarbeitungsschritten.
-	\item Wir berechnen alle werte von $T[D,v]$ durch erhöhen der Kardinalitäten von $D$.
+%	\item Wir berechnen alle Werte von $T[D,v]$ durch erhöhen der Kardinalitäten von $D$.
 	\item Um im allgemeinen Fall $T[D,v]$ berechnen zu können benötigen wir die Werte $T[D',u]$ und $T[D\backslash D', u]$
 	\item Auf die Art wie in Lemma 6.2 beschrieben kann man für feste Werte $D$ und $v$ $T[D,v]$ in Zeit, $2^{|D|}n^{\mathcal{O}(1)}$ berechnen.
 	\end{itemize}
@@ -387,7 +387,7 @@
 	\frametitle{Ganzzahlige Lineare Programmierungs Machbarkeit}
 	%\framesubtitle{6.1.1 SET COVER}
 	\begin{alertblock}{Definition: Ganzzahlige Lineare Programmierungs Machbarkeit}
-		Beim Ganzzahligen Linearen Programmierungs Machbarkeits Problem (Integer Linear Programming Feasibility Problem) bekommt man ein $p$ Variablen $x_1,x_2,...,x_p$ und eine Menge ab $m$ Ungleichungen in der Form:\\
+		Beim Ganzzahligen Linearen Programmierungs Machbarkeits Problem (Integer Linear Programming Feasibility Problem) bekommt man ein $p$ Variablen $x_1,x_2,...,x_p$ und eine Menge an $m$ Ungleichungen in der Form:\\
 		\begin{tabular}{lc}
 			\hspace{20mm} & $a_{1,1}x_1+a_{1,2}x_2+...+a_{1,p}x_p\leq b_1$\\
 			& $\vdots$\\
@@ -535,7 +535,7 @@
 \end{frame}	
 	
 \begin{frame}
-	\frametitle{Formulierung des Linearen Probelems}
+	\frametitle{Formulierung des Linearen Problems}
 	%\framesubtitle{Beweis}	
 	\begin{tabular}{lll}
 	$\min$ & $\sum\limits_{i = 1}^k y_i + \sum\limits_{i=0}^k \sum\limits_{S\subseteq X} z_S^i x_S^i$ &\\
@@ -548,7 +548,7 @@
 \end{frame}		
 
 \begin{frame}
-	\frametitle{Formulierung des Linearen Probelems}
+	\frametitle{Formulierung des Linearen Problems}
 	%\framesubtitle{Beweis}	
 	\begin{itemize}
 	\item Durch anwenden des Theorems 6.5 kann man dieses Lineare Problem parametrisiert lösen.
