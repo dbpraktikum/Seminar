@@ -41,8 +41,8 @@
 	\begin{beamercolorbox}[]{}%[ht=2.5ex,dp=1.125ex, leftskip=.3cm,rightskip=.3cm plus1fil]{}%{author in head/foot}
 		\begin{tikzpicture}
 			\useasboundingbox[fill=white] (0,0) rectangle(\the\paperwidth,.3);
-			\draw[fill=jgulightgrey,draw=none] (0,0) rectangle (.25\paperwidth,.3) node[midway,text=white] {\insertshortauthor};
-			\draw[fill=jgulightgrey,draw=none] (.25\paperwidth,0) rectangle (.9\paperwidth,.3) node[midway,text=white] {\insertshortinstitute\hspace{2cm}\insertdate};
+			\draw[fill=white,draw=none] (0,0) rectangle (.25\paperwidth,.3) node[midway,text=black] {\insertframenumber{}\hspace{3cm}}; 
+			\draw[fill=white,draw=none] (.25\paperwidth,0) rectangle (.9\paperwidth,.3) node[midway,text=black] {\insertshortinstitute\hspace{2cm}\insertdate};
 			\draw[fill=white,draw=none] (.9\paperwidth,0) rectangle (\the\paperwidth,.3) node[midway,text=white] {\includegraphics[height=1.4cm, keepaspectratio]{Logos/JGULogo.jpg}};
 		\end{tikzpicture}
      \end{beamercolorbox}%	
