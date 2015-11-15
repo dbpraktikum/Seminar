@@ -151,10 +151,10 @@
 	\frametitle{Set Cover} 
 	%\framesubtitle{Erinnerung} 
 	\begin{alertblock}{Definition: Überdeckung}
-		Sei $\mathcal{F}$ eine Familie von Mengen in einem Universum $\mathcal{U}$. Für eine Unterfamilie $\mathcal{F}'\subseteq\mathcal{F}$ und einer Teilmenge $\mathcal{U}'\subseteq\mathcal{U}$ sagen wir, dass $\mathcal{F}'$ $\mathcal{U}'$ überdeckt, wenn jedes Element von $\mathcal{U}'$ zu mindestens einer Menge von $\mathcal{F}'$ gehört $(\mathcal{U}'\subseteq\bigcup\mathcal{F}')$.
+		Sei $\mathcal{F}$ eine Familie von Mengen in einem Universum $\mathcal{U}$. Wir sagen, dass $\mathcal{F}$ $\mathcal{U}$ überdeckt, wenn jedes Element von $\mathcal{U}$ in mindestens einer Menge von $\mathcal{F}$ enthalten ist. $(\mathcal{U}\subseteq\bigcup\mathcal{F})$.
 	\end{alertblock}
 	\begin{alertblock}{Set Cover}
-		Im Set Cover Problem ist eine Familie von Mengen $\mathcal{F}$ gegeben in einem Universum $\mathcal{U}$ und eine positive ganze Zahl $k$. Die Aufgabe ist zu überprüfen ob eine Unterfamilie, mit maximal $k$ Elementen, $\mathcal{F}'\subseteq\mathcal{F}$ existiert, so dass $\mathcal{F}'$ $\mathcal{U}$ überdeckt.
+		Im Set Cover Problem ist eine Familie von Mengen $\mathcal{F}$ in einem Universum $\mathcal{U}$ und eine positive ganze Zahl $k$ gegeben. Die Aufgabe ist zu überprüfen ob eine Unterfamilie, mit maximal $k$ Elementen, $\mathcal{F}'\subseteq\mathcal{F}$ existiert, so dass $\mathcal{F}'$ $\mathcal{U}$ überdeckt.
 	\end{alertblock}
 \end{frame}
 
@@ -185,7 +185,6 @@
 	\frametitle{Theorem 6.1} 
 	\framesubtitle{Beweis} 
 	\begin{itemize}
-	\item In unserem dynamischen Algorithmus Programm berechnen wir alle $2^{|\mathcal{U}|}(\mathcal{F}+1)$ Werte $T[X,j]$
 	\item Basis Fall: $T[\emptyset,0] = 0$, $T[X,0] = +\infty$, für $X\neq\emptyset$
 	\item Rekusiver Fall: Für $X \subseteq \mathcal{U}$ und $0< j\leq |\mathcal{F}|$ zeigen wir, dass $T[X,j] = min(T[X, j-1], 1 + T[X\backslash F_j,j-1])$    
 	\end{itemize}
@@ -201,17 +200,17 @@
 	\item Für $\geq$: Sei $\mathcal{F}' \subseteq \{F_1,F_2,...,F_j\}$ eine Familie mit minimaler Größe, die $X$ überdeckt, wir unterscheiden zwei Fälle:\\
 	\pause
 	\begin{itemize}
-		\item $F_j\notin \mathcal{F}'$, dann ist $\mathcal{F}'$ auch ein zulässiger Kandidat für $T[X,j-1]$
+		\item $F_j\notin \mathcal{F}'$, dann ist $\mathcal{F}'$ auch eine zulässige Lösung für $T[X,j-1]$
 		\pause
-		\item $F_j\in\mathcal{F}'$, dann ist $\mathcal{F}'\backslash F_j$ ein zulässiger Kandidat für $T[X\backslash F_j, j-1]$ 
+		\item $F_j\in\mathcal{F}'$, dann ist $\mathcal{F}'\backslash F_j$ eine zulässige Lösung für $T[X\backslash F_j, j-1]$ 
 	\end{itemize}
 	\pause	
 	\item Für $\leq$:
 	\pause
 	\begin{itemize}
-		\item jeder zulässige Kandidat $\mathcal{F}'$ für $T[X,j-1]$ ist auch ein zulässiger Kandidat für $T[X,j]$
+		\item Eine Lösung $\mathcal{F}'$ für $T[X,j-1]$ ist auch eine zulässige Lösung für $T[X,j]$
 		\pause
-		\item für jeden zulässigen Kandidaten $\mathcal{F}'$ für $T[X\backslash F_j, j-1]$ gilt, dass $\mathcal{F}'\cup F_j$ ein zulässiger Kandidat für $T[X,j]$ ist
+		\item Für eine Lösung  $\mathcal{F}'$ für $T[X\backslash F_j, j-1]$ gilt, dass $\mathcal{F}'\cup F_j$ eine zulässige Lösung für $T[X,j]$ ist.
 	\end{itemize}	 	
 	\end{itemize}
 \end{frame}
@@ -220,7 +219,7 @@
 	\frametitle{Theorem 6.1} 
 	\framesubtitle{Beweis} 
 	\begin{itemize}
-	\item Mit diesem dynamischen Programm können wir für alle $X\subseteq U$ und $0\leq j\leq |\mathcal{F}|$ den Wert $T[X,j]$ in versprochener Zeit $2^{|\mathcal{U}|}(|\mathcal{U}| + |\mathcal{F}|)^{\mathcal{O}(1)}$ berechnen.
+	\item In unserem dynamischen Algorithmus Programm berechnen wir alle $2^{|\mathcal{U}|}(|\mathcal{F}|+1)$ Werte $T[X,j]$
 	\item Der Wert den wir suchen ist $T[\mathcal{U},|\mathcal{F}|]$
 	\end{itemize}
 \end{frame}
@@ -311,7 +310,7 @@
 	\item Man zeigt wieder die Ungleichheit in beide Richtungen.
 	\item Für $\leq$:
 	\begin{itemize}
-	\item Fixiere $u\in V(G)$ und $\emptyset \neq D'\subsetneq D$
+	\item Fixiere $u\in V(G)\backslash K$ und $\emptyset \neq D'\subsetneq D$
 	\item Sei $H_1$ der Baum, der den Wert $T[D',u]$ bestimmt, $H_2$ der Baum, der den Wert $T[D\backslash D',u]$ bestimmt, und $P$ der kürzeste Pfad zwischen $v$ und $u$.
 	\item $w(H_1\cup H_2\cup P) \leq w(H_1) + w(H_2) +w(P) = T[D',u] + T[D\backslash D',u] + dist(u,v))$
 	\end{itemize}
@@ -478,7 +477,6 @@
 	\frametitle{Parametrisierung}
 	%\framesubtitle{Beweis}	
 	\begin{itemize}
-	\item Im Folgenden werden wir zeigen, wie man Theorem 6.5 einsetzen kann um einen FPT Algorithmus für das Imbalance Problem parametrisiert durch die Größe der gegebenen Knotenüberdeckung von $G$.
 	\item Um die minimale Ordnung $\iota_\pi$ zu finden werden wir für alle möglichen Ordnungen $\pi_X : X\rightarrow \{1,2,...,k\}$ der gegebenen Knotenüberdeckung, werden wir die beste Ordnung $\pi$ finden, die mit $\pi_X$ übereinstimmt.
 	\begin{itemize}
 	\item Wir sagen, dass $\pi_X$ mit $\pi$ übereinstimmt, wenn gilt $\pi_X(u) < \pi_X(v)$, genau dann wenn $\pi(u) < \pi(v)$.

@@ -41,9 +41,9 @@
 	\begin{beamercolorbox}[]{}%[ht=2.5ex,dp=1.125ex, leftskip=.3cm,rightskip=.3cm plus1fil]{}%{author in head/foot}
 		\begin{tikzpicture}
 			\useasboundingbox[fill=white] (0,0) rectangle(\the\paperwidth,.3);
-			\draw[fill=jgudarkgrey,draw=none] (0,0) rectangle (.25\paperwidth,.3) node[midway,text=white] {\insertshortauthor};
+			\draw[fill=jgulightgrey,draw=none] (0,0) rectangle (.25\paperwidth,.3) node[midway,text=white] {\insertshortauthor};
 			\draw[fill=jgulightgrey,draw=none] (.25\paperwidth,0) rectangle (.9\paperwidth,.3) node[midway,text=white] {\insertshortinstitute\hspace{2cm}\insertdate};
-			\draw[fill=jgured,draw=none] (.9\paperwidth,0) rectangle (\the\paperwidth,.3) node[midway,text=white] {\insertframenumber{}/\inserttotalframenumber};
+			\draw[fill=white,draw=none] (.9\paperwidth,0) rectangle (\the\paperwidth,.3) node[midway,text=white] {\includegraphics[height=1.4cm, keepaspectratio]{Logos/JGULogo.jpg}};
 		\end{tikzpicture}
      \end{beamercolorbox}%	
     \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
@@ -98,17 +98,17 @@
 \defbeamertemplate*{frametitle}{texsx}
 {
 %\vskip.1cm% Distance between upper slide edge to frame title
-\hspace{-0.25cm}
-\begin{beamercolorbox}[wd=\the\paperwidth,ht=1.35cm]{frametitle} 
+%\hspace{-0.25cm}
+\begin{beamercolorbox}[wd=\the\paperwidth,ht=1.05cm]{frametitle} 
 	\begin{tikzpicture}
-		\useasboundingbox[fill=white] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+		\useasboundingbox[fill=jgured] (0,0) rectangle(\the\paperwidth,\the\paperheight);
 		%Background navigation sections
-		\draw[fill=jgudarkgrey,draw=none] (1.405,1) rectangle (1.05\paperwidth,1.4) node[midway,text=white] {\tiny\insertnavigation{.75\paperwidth}};		
+		%\draw[fill=jgudarkgrey,draw=none] (1.405,1) rectangle (1.05\paperwidth,1.4) node[midway,text=white] {\tiny\insertnavigation{.75\paperwidth}};		
 		%JGU logo
-		\node[anchor=south west, inner sep=0pt] (zero) at (0,-0.005)
-		{\includegraphics[height=1.4cm, keepaspectratio]{Logos/jgu_logo_kasten.pdf}};
+		%\node[anchor=south west, inner sep=0pt] (zero) at (0,-0.005)
+		%{\includegraphics[height=1.4cm, keepaspectratio]{Logos/jgu_logo_kasten.pdf}};
 		%frame(sub)title background
-		\draw[fill=jgulightgrey,draw=none] (1.405,0) rectangle (1.05\paperwidth,1);
+		\draw[fill=jgured,draw=none] (1.405,0) rectangle (1.05\paperwidth,1);
 		%frame(sub)title
 		\ifx\insertframesubtitle\@empty%
 			\node[inner sep = 0pt,anchor=west,white,font=\large] at (1.6,.5) {\insertframetitle};
