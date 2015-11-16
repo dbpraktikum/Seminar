@@ -347,6 +347,13 @@
 	\frametitle{Theorem 6.3}
 	\framesubtitle{Beweis}
 	\begin{itemize}
+	%\item Sei $(G,w,K)$ eine Instanz vom Steiner Baum Problem nach den Vorverarbeitungsschritten.
+%	\item Wir berechnen alle Werte von $T[D,v]$ durch erhöhen der Kardinalitäten von $D$.
+	%\item Um im allgemeinen Fall $T[D,v]$ berechnen zu können benötigen wir die Werte $T[D',u]$ und $T[D\backslash D', u]$
+	\item Auf die Art wie in Lemma 6.2 beschrieben kann man für feste Werte $D$ und $v$ $T[D,v]$ in Zeit, $2^{|D|}n^{\mathcal{O}(1)}$ berechnen.
+	\end{itemize}
+	\pause
+	\begin{itemize}
 	\item $V = V(G)\backslash K$, $v_i\in V$ und $D_i\subseteq K$, $|D_{i-1}| \leq |D_{i}|$
 	\end{itemize}
 	\begin{tabular}{|c|c|c|c|c|c|}
@@ -366,12 +373,6 @@
 	$D_{2^{|K|}}$&$T[D_{2^{|K|}},v_1]$&...&$T[D_{2^{|K|}},v_i]$&...&$T[D_{2^{|K|}},v_{|V|}]$\\
 	\hline	
 	\end{tabular}\\
-	\begin{itemize}
-	%\item Sei $(G,w,K)$ eine Instanz vom Steiner Baum Problem nach den Vorverarbeitungsschritten.
-%	\item Wir berechnen alle Werte von $T[D,v]$ durch erhöhen der Kardinalitäten von $D$.
-	%\item Um im allgemeinen Fall $T[D,v]$ berechnen zu können benötigen wir die Werte $T[D',u]$ und $T[D\backslash D', u]$
-	\item Auf die Art wie in Lemma 6.2 beschrieben kann man für feste Werte $D$ und $v$ $T[D,v]$ in Zeit, $2^{|D|}n^{\mathcal{O}(1)}$ berechnen.
-	\end{itemize}
 \end{frame}
 
 \begin{frame}
